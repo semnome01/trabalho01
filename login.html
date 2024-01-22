@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+  <!-- Define o título da página -->
+  <title>Login com Firebase</title>
+  <!-- Importa o Bootstrap para estilização -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Estilos CSS internos -->
+  <style>
+      body {
+          background-color: #f4f4f4; /* Cor de fundo do corpo da página */
+          padding-top: 20px; /* Espaçamento no topo do corpo da página */
+      }
+      .container {
+          background: rgb(98, 116, 115); /* Cor de fundo do container */
+          padding: 20px; /* Espaçamento interno do container */
+          border-radius: 8px; /* Arredondamento das bordas do container */
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra ao redor do container */
+      }
+  </style>
+<body>
+      <!-- Container principal para o formulário de login -->
+      <div class="container">
+        <h2>Login</h2> <!-- Título do formulário -->
+        <!-- Formulário de login com ID 'formLogin' -->
+        <form id="formLogin">
+            <!-- Grupo de formulário para e-mail -->
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="email" class="form-control" id="email" required>
+            </div>
+            <!-- Grupo de formulário para senha -->
+            <div class="form-group">
+                <label for="senha">Senha:</label>
+                <input type="password" class="form-control" id="senha" required>
+            </div>
+            <!-- Botão para submeter o formulário -->
+            <button type="submit" class="btn btn-primary">Entrar</button>
+        </form>
+    </div>
+      <!-- Scripts do Firebase -->
+      <script type="module">
+
+        // Importando funções específicas do Firebase SDK
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js';
+        import { getAuth, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js';
+
+        // Configurações do projeto Firebase
+        const firebaseConfig = {
+//COLOCAR INFORMAÇÕES DA API AQUI     ---- ATENÇÃO ----
+  };
+  // Inicializa a aplicação Firebase com as configurações fornecidas
+  const app = initializeApp(firebaseConfig);
+
+
+// Obtém uma instância do serviço de autenticação do Firebase
+const auth = getAuth(app);
+
+
+// Adiciona um ouvinte de evento para o formulário de login
+document.getElementById('formLogin').addEventListener('submit', function(event){     
+   
+    // Previne o comportamento padrão do formulário (envio/reload da página)
+    event.preventDefault();
+
+    // Captura o e-mail e senha inseridos pelo usuário
+    const email = document.getElementById('email').value;
+    const senha = document.getElementById('senha').value;
+
+    // Tenta autenticar o usuário com e-mail e senha
+    signInWithEmailAndPassword(auth, email, senha)
+        .then((userCredential) => {
+            // Se bem-sucedido, loga informações no console e redireciona
+            console.log("Login bem-sucedido:", userCredential);
+            window.location.href = 'PedraPapelTesoura.html'; // Alterar para a URL desejada
+        })
+        .catch((error) => {
+            // Em caso de erro, exibe uma mensagem de erro
+            console.error("Erro no login:", error);
+            alert("Erro no login: " + error.message);
+        });
+});
+</script>
+   
+    
+ 
+ 
+    
+</body>
+</html>
