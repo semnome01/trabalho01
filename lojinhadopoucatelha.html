@@ -1,0 +1,63 @@
+<head>
+    <!-- Define a codificação de caracteres como UTF-8 -->
+    <meta charset="UTF-8">
+    <!-- Configura a viewport para ser responsiva e definir a escala inicial -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Título da página -->
+    <title>Cadastro Completo</title>
+    <!-- Link para a folha de estilos do Bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Estilos CSS internos -->
+    <style>
+        body {
+            background-color: #f4f4f4; /* Cor de fundo */
+            padding-top: 20px; /* Espaçamento no topo */
+        }
+        .container {
+            background: white; /* Fundo branco para o container */
+            padding: 20px; /* Espaçamento interno */
+            border-radius: 8px; /* Bordas arredondadas */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra ao redor do container */
+        }
+    </style>
+</head>
+<body>
+    <!-- Container principal para o formulário de cadastro -->
+    <div class="container">
+        <h2>Cadastro de Usuário</h2>
+        <!-- Formulário de cadastro -->
+        <form id="formCadastro" enctype="multipart/form-data">
+            <!-- Campo de nome -->
+            <div class="form-group">
+                <label for="nome">Nome:</label>
+                <input type="text" class="form-control" id="nome" required>
+            </div>
+            <!-- Campo de data de nascimento -->
+            <div class="form-group">
+                <label for="dataNascimento">Data de Nascimento:</label>
+                <input type="date" class="form-control" id="dataNascimento" required>
+            </div>
+            <!-- Campo de email -->
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="email" class="form-control" id="email" required>
+            </div>
+            <!-- Campo de senha -->
+            <div class="form-group">
+                <label for="senha">Senha:</label>
+                <input type="password" class="form-control" id="senha" required>
+            </div>
+            <!-- Campo de upload de foto de perfil -->
+            <div class="form-group">
+                <label for="fotoPerfil">Foto de Perfil:</label>
+                <input type="file" class="form-control" id="fotoPerfil" accept="image/*">
+            </div>
+            <!-- Botão de cadastro -->
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </form>
+    </div>
+
+ 
+</body>
+</html>
